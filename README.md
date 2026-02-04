@@ -48,8 +48,8 @@ The core of this project is a robust **Data Sanitization Pipeline** designed to 
 
 1. **Clone the repository:**
 ```bash
-git clone https://github.com/yourusername/ChiliIndex.git
-cd ChiliIndex
+git clone https://github.com/joan0fsnark/chile-index.git
+cd chile-index
 
 ```
 
