@@ -36,7 +36,6 @@ The core of this project is a robust **Data Sanitization Pipeline** designed to 
 
 ```text
 ├── app.py                # Main Streamlit application logic
-├── csv_to_csv.py         # Data sanitization and transformation script
 ├── chile_data.csv        # The sanitized "Source of Truth" dataset
 ├── requirements.txt      # Project dependencies
 └── README.md             # Project documentation
