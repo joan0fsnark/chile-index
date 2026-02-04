@@ -6,7 +6,7 @@ The **Chili Index Explorer** is a Streamlit-based web application designed to ca
 
 ## 🚀 Live Demo
 
-[Link to your deployed Streamlit App (e.g., [https://chileheads.streamlit.app/](https://chileheads.streamlit.app/))]
+[https://chileheads.streamlit.app/](https://chileheads.streamlit.app/)
 
 ---
 
