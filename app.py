@@ -122,7 +122,7 @@ if not df.empty:
     st.sidebar.markdown("### 📜 Credits & Licensing")
     st.sidebar.info(
         """
-        **Data Architect:** u/BennyTheAstronaut  
+        **Data Architect:** [u/BennyTheAstronaut](https://www.reddit.com/user/BennyTheAstronaut/)  
 
         **Formula:** Collins et al. (1995) / ASTA  
 
