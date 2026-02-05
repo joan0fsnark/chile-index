@@ -6,9 +6,6 @@ import os
 # --- Page Configuration ---
 st.set_page_config(page_title="Chile Index Explorer", layout="wide", page_icon="🌶️")
 
-st.title("🌶️ Chile Index Explorer")
-st.write("An interactive guide to the botanical world of chile peppers.")
-
 # --- Helper Functions for Data Sanitization ---
 
 def clean_shu(val):
@@ -60,19 +57,43 @@ def load_and_clean_data():
         st.error(f"Error loading data: {e}")
         return pd.DataFrame()
 
+# --- Main App Logic ---
+
+st.title("🌶️ Chile Index Explorer")
+st.write("An interactive guide to the botanical world of chile peppers.")
+
 df = load_and_clean_data()
 
 if not df.empty:
+    # 1. READ INITIAL STATE from st.query_params
+    url_pepper = st.query_params.get("pepper", "All Varieties")
+    
     # --- Sidebar Filters ---
     st.sidebar.header("Search & Filters")
     
-    # SEARCH WITH AUTOCOMPLETE (Matches as you type)
+    # Organize cultivar list for selectbox
     all_cultivars = ["All Varieties"] + df['Cultivar'].tolist()
+    
+    # Determine default index based on URL
+    default_index = 0
+    if url_pepper in all_cultivars:
+        default_index = all_cultivars.index(url_pepper)
+
+    # SEARCH WITH AUTOCOMPLETE
     search_choice = st.sidebar.selectbox(
         "Search & Match Variety:", 
         options=all_cultivars,
+        index=default_index,
         help="Type to find a specific pepper. The list is organized alphabetically."
     )
+
+    # 2. UPDATE st.query_params based on selection
+    if search_choice != "All Varieties":
+        st.query_params["pepper"] = search_choice
+    else:
+        # Clear param if default to keep URL clean
+        if "pepper" in st.query_params:
+            del st.query_params["pepper"]
 
     # Multiselect Dropdowns
     all_species = sorted(df['Species'].unique().tolist())
@@ -122,7 +143,7 @@ if not df.empty:
     st.sidebar.markdown("### 📜 Credits & Licensing")
     st.sidebar.info(
         """
-        **Data Architect:** [u/BennyTheAstronaut](https://www.reddit.com/user/BennyTheAstronaut/)  
+        **Data Architect:** [u/BennyTheAstronaut](https://www.reddit.com/user/BennyTheAstronaut/)   
 
         **Formula:** Collins et al. (1995) / ASTA  
 
