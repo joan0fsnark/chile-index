@@ -107,8 +107,8 @@ if not df.empty:
     st.dataframe(
         filtered_df,
         column_config={
-            "Cultivar": st.column_config.TextColumn("Variety Name"),
-            "Species": st.column_config.TextColumn("Scientific Name (*Italics*)"),
+            "Cultivar": st.column_config.TextColumn("Common Name"),
+            "Species": st.column_config.TextColumn("Scientific Name"),
             "Research-Accepted SHU": st.column_config.NumberColumn("Scoville (SHU)", format="%d"),
             "0/10": st.column_config.NumberColumn("Heat Score", format="%.1f"),
             "Notes": st.column_config.TextColumn("Notes", width="large")
